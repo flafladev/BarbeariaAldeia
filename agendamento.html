@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento - Barbearia Aldeia</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="fotoaldeia1.jpeg" alt="Barbearia Aldeia">
+                <h1>Barbearia Aldeia</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="agendamento.html" class="active">Agendar</a></li>
+                <li><a href="historico.html">Histórico</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="agendamento-wrapper">
+            <div class="agendamento-header">
+                <h2><i class="fas fa-calendar-alt"></i> Agende seu horário</h2>
+                <p>Escolha os serviços, data e barbeiro de sua preferência</p>
+            </div>
+
+            <div id="mensagem"></div>
+
+            <form id="agendamentoForm" class="agendamento-form">
+                <!-- Dados do cliente -->
+                <div class="form-card">
+                    <div class="card-header"><i class="fas fa-user"></i><h3>Seus dados</h3></div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="nome">Nome completo <span class="required">*</span></label>
+                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone (WhatsApp) <span class="required">*</span></label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Serviços principais -->
+                <div class="form-card">
+                    <div class="card-header"><i class="fas fa-cut"></i><h3>Serviços principais</h3><span class="badge">escolha um ou mais</span></div>
+                    <div class="card-body">
+                        <div class="checkbox-grid">
+                            <label class="option-card"><input type="checkbox" name="servicos" value="Corte Degradê"><i class="fas fa-cut"></i><span>Corte Degradê</span></label>
+                            <label class="option-card"><input type="checkbox" name="servicos" value="Barba Completa"><i class="fas fa-beard"></i><span>Barba Completa</span></label>
+                            <label class="option-card"><input type="checkbox" name="servicos" value="Corte Infantil"><i class="fas fa-child"></i><span>Corte Infantil</span></label>
+                            <label class="option-card"><input type="checkbox" name="servicos" value="Hidratação"><i class="fas fa-tint"></i><span>Hidratação</span></label>
+                            <label class="option-card"><input type="checkbox" name="servicos" value="Pigmentação"><i class="fas fa-mask"></i><span>Pigmentação</span></label>
+                            <label class="option-card"><input type="checkbox" name="servicos" value="Sobrancelha"><i class="fas fa-hand-sparkles"></i><span>Sobrancelha</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Serviços adicionais -->
+                <div class="form-card">
+                    <div class="card-header"><i class="fas fa-plus-circle"></i><h3>Serviços adicionais</h3><span class="badge">opcional</span></div>
+                    <div class="card-body">
+                        <div class="checkbox-grid">
+                            <label class="option-card"><input type="checkbox" name="adicionais" value="Barba"><i class="fas fa-beard"></i><span>Barba (extra)</span></label>
+                            <label class="option-card"><input type="checkbox" name="adicionais" value="Sobrancelha"><i class="fas fa-hand-sparkles"></i><span>Sobrancelha</span></label>
+                            <label class="option-card"><input type="checkbox" name="adicionais" value="Hidratação"><i class="fas fa-tint"></i><span>Hidratação</span></label>
+                            <label class="option-card"><input type="checkbox" name="adicionais" value="Pigmentação"><i class="fas fa-mask"></i><span>Pigmentação</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data e hora customizados (calendário sempre visível) -->
+                <div class="form-card">
+                    <div class="card-header"><i class="fas fa-clock"></i><h3>Data e horário</h3></div>
+                    <div class="card-body">
+                        <div class="custom-datetime">
+                            <div class="custom-date">
+                                <label>Escolha a data</label>
+                                <div class="date-input-group">
+                                    <input type="hidden" id="data" name="data" required>
+                                    <div class="calendar-container" id="calendarContainer">
+                                        <div class="calendar-header">
+                                            <button type="button" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                                            <span id="monthYearDisplay">Março 2025</span>
+                                            <button type="button" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                                        </div>
+                                        <div class="calendar-weekdays">
+                                            <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+                                        </div>
+                                        <div class="calendar-days" id="calendarDays"></div>
+                                    </div>
+                                    <div class="selected-date" id="selectedDateDisplay">
+                                        <span class="day">DD</span> / <span class="month">MM</span> / <span class="year">AAAA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="custom-time">
+                                <label>Escolha o horário</label>
+                                <div class="time-slots" id="timeSlots"></div>
+                                <input type="hidden" id="hora" name="hora" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Escolha do barbeiro -->
+                <div class="form-card">
+                    <div class="card-header"><i class="fas fa-user-tie"></i><h3>Preferência de barbeiro</h3><span class="badge">opcional</span></div>
+                    <div class="card-body">
+                        <div class="radio-group">
+                            <label class="option-card radio"><input type="radio" name="barbeiro" value="Roger"><i class="fas fa-user"></i><span>Roger</span></label>
+                            <label class="option-card radio"><input type="radio" name="barbeiro" value="Carlos"><i class="fas fa-user"></i><span>Carlos</span></label>
+                            <label class="option-card radio"><input type="radio" name="barbeiro" value="Indiferente" checked><i class="fas fa-user-friends"></i><span>Indiferente</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar agendamento</button>
+            </form>
+        </div>
+    </main>
+
+    <footer id="contato">
+        <p>&copy; 2025 Barbearia Aldeia - Todos os direitos reservados.</p>
+        <div class="social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="agendamento.js"></script>
+</body>
+</html>

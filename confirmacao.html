@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação - Barbearia Aldeia</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="fotoaldeia1.jpeg" alt="Barbearia Aldeia">
+                <h1>Barbearia Aldeia</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="agendamento.html">Agendar</a></li>
+                <li><a href="historico.html">Histórico</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="agendamento-wrapper" style="max-width: 700px;">
+            <div class="agendamento-header">
+                <h2><i class="fas fa-check-circle" style="color: #4CAF50;"></i> Agendamento confirmado!</h2>
+                <p>Seu horário foi reservado. Veja os detalhes abaixo.</p>
+            </div>
+
+            <div class="form-card">
+                <div class="card-header"><i class="fas fa-receipt"></i><h3>Detalhes do agendamento</h3></div>
+                <div class="card-body" style="text-align: left;" id="detalhes">
+                    <!-- preenchido via JS -->
+                </div>
+            </div>
+
+            <div class="form-card confirmation">
+                <div class="card-header"><i class="fab fa-whatsapp"></i><h3>Confirme com o barbeiro</h3></div>
+                <div class="card-body">
+                    <p>Para garantir seu horário, envie uma mensagem para o barbeiro pelo WhatsApp:</p>
+                    <div class="whatsapp-buttons" id="whatsapp-links"></div>
+                    <p style="margin-top: 1rem;">Ou <a href="historico.html" id="link-historico">clique aqui</a> para ver seu histórico.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="index.html" class="btn">Voltar para a página inicial</a>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contato">
+        <p>&copy; 2025 Barbearia Aldeia - Todos os direitos reservados.</p>
+        <div class="social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="confirmacao.js"></script>
+</body>
+</html>
